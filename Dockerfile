@@ -8,6 +8,11 @@ RUN apt-get update && apt-get install -y \
 	make \
 	netcat \
 	python \
-	g++	
+	g++ \
+	bzip2 \
+	dnsutils \
+	screen
 
-COPY . /src/
+ADD https://raw.githubusercontent.com/amix/vimrc/master/vimrcs/basic.vim ~/.vimrc
+
+CMD bash
