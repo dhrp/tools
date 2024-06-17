@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: tools
+  labels:
+    name: tools
+    app: tools
+spec:
+  containers:
+    - name: tools
+      image: dhrp/tools
+      imagePullPolicy: Always
+      command:
+        - webserver
+      resources:
+        limits:
+          memory: "128Mi"
+          cpu: "500m"
+      ports:
+        - containerPort: 8000

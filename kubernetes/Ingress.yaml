@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    certmanager.k8s.io/cluster-issuer: letsencrypt-prod
+    # cert-manager.io/cluster-issuer: letsencrypt-prod
+    # cert-manager.io/cluster-issuer: letsencrypt-staging
+  labels:
+    app: tools
+  name: tools-ing
+spec:
+  rules:
+    - host: tools.staging.unchain.io
+      http:
+        paths:
+          - backend:
+              serviceName: tools
+              servicePort: 8000
+            path: /
+  tls:
+    - hosts:
+        - tools.staging.unchain.io
+      secretName: tools.staging.unchain.io
